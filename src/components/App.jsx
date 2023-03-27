@@ -4,7 +4,7 @@ import { Layout } from './Layout';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from '../redux/auth/operations';
 
-const Home = lazy(() => import('../Pages/Home/Home'));
+// const Home = lazy(() => import('../Pages/Home/Home'));
 const Registration = lazy(() => import('../Pages/Registration/Registration'));
 const Login = lazy(() => import('../Pages/Login/Login'));
 const Contacts = lazy(() => import('../Pages/Contacts/Contacts'));
@@ -19,7 +19,6 @@ export const App = () => {
     <div>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/login" element={<Login />} />
           <Route path="/contacts" element={<Contacts />} />
