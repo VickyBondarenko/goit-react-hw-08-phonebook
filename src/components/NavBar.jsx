@@ -10,23 +10,25 @@ export const NavBar = () => {
   const navigate = useNavigate();
   const isLoggedin = useSelector(selectIsLoggedIn);
   const token = useSelector(selectToken);
-  // const name = useSelector(state => state.auth.user.name);
+  const name = useSelector(state => state.auth.user.name);
   return (
     <Header className="">
-      {token ? (
-        <StyledLink to="/contacts">Phonebook</StyledLink>
+      {/* {token ? (
+        
       ) : (
-        <StyledLink to="/">Home</StyledLink>
-      )}
+        
+      )} */}
 
       {!isLoggedin ? (
         <div>
+          <StyledLink to="/">Home</StyledLink>
           <StyledLink to="/login">log In</StyledLink> |
           <StyledLink to="/register">Register</StyledLink>
         </div>
       ) : (
         <div className="">
-          <p>mango@mail.com</p>
+          <StyledLink to="/contacts">Phonebook</StyledLink>
+          <p>Welcome, {name}</p>
           <button
             className=""
             onClick={() => {

@@ -5,6 +5,7 @@ import {
   selectLoadingValue,
   selectError,
 } from '../../redux/contacts/selectors';
+import { selectToken } from 'redux/auth/selectors';
 import { List } from 'components/list/List';
 import { Form } from 'components/form/Form';
 import { Filter } from 'components/filter/Filter';
@@ -14,10 +15,12 @@ export const Contacts = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectLoadingValue);
   const error = useSelector(selectError);
+  const token = useSelector(selectToken);
 
   useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+    token && dispatch(fetchContacts());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [token]);
 
   return (
     <Wraper>
