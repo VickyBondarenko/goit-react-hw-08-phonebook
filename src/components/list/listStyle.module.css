@@ -1,19 +1,29 @@
 .list {
+  padding: 0;
+  margin: 0;
   font-size: 20px;
   color: #22313f;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .item {
+  padding: 0;
+  margin: 0;
   display: flex;
+  width: 400px;
   gap: 20px;
   justify-content: space-between;
   align-items: center;
+  padding: 10px 20px;
+  border: 2px solid #1565c0;
+  border-radius: 8px;
+  box-shadow: 0px 2px 11px -1px rgba(156, 158, 204, 1);
 }
-
+.contact {
+  margin: 0;
+}
 .list_btn {
-  height: 30px;
-  width: 80px;
-  color: #22313f;
-  border: 2px solid #22313f;
-  font-size: 15px;
+  color: #1565c0;
 }

@@ -24,11 +24,11 @@ export const Contacts = () => {
 
   return (
     <Wraper>
-      <h1>Phonebook</h1>
+      <h2>Phonebook</h2>
       <Form />
 
-      <h2>Contacts</h2>
       <Filter />
+      <h2>Contacts</h2>
       {isLoading && !error && <b>Request in progress...</b>}
       <List />
     </Wraper>

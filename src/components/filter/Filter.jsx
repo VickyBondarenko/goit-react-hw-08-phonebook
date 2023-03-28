@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { changeFilter } from '../../redux/contacts/slice';
 import { selectFilterValue } from '../../redux/contacts/selectors';
+import TextField from '@mui/material/TextField';
+import css from './filterStyle.module.css';
 
 export const Filter = () => {
   const filter = useSelector(selectFilterValue);
@@ -8,11 +10,13 @@ export const Filter = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="filter">
+    <div className={css.wraper}>
       <p>Find contacts by name</p>
-      <input
+      <TextField
+        id="outlined-basic"
+        label="Contact name"
+        variant="outlined"
         type="text"
-        placeholder="Type to search ..."
         value={filter}
         onChange={e => dispatch(changeFilter(e.target.value))}
       />

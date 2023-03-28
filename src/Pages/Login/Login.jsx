@@ -1,41 +1,51 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../redux/auth/operations';
-// import { selectToken, selectIsLoggedIn } from '../../redux/auth/selectors';
-// import { useEffect } from 'react';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import css from './loginStyle.module.css';
 
 export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const isLoggedin = useSelector(selectIsLoggedIn);
-  // const token = useSelector(selectToken);
+
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    dispatch(logIn({ email, password }));
+    dispatch(logIn({ email, password }))
+      .unwrap()
+      .then(() => navigate('/contacts'))
+      .catch(error => console.log(error));
+
     form.reset();
-    navigate('/');
   };
 
   return (
-    <div className="form__wrapper">
-      <h1>login</h1>
-      <form className="flex gap-2 flex-col w-1/4 p-4" onSubmit={handleSubmit}>
-        <input
+    <div className={css.wraper}>
+      <h1 className={css.title}>login</h1>
+      <form className={css.form} onSubmit={handleSubmit}>
+        <TextField
+          id="outlined-basic"
+          label="Email"
+          variant="outlined"
           className="border"
           name="email"
           placeholder="email"
           type="text"
         />
-        <input
+        <TextField
+          id="outlined-basic"
+          label="Passwordl"
+          variant="outlined"
           className="border"
           name="password"
-          placeholder="password"
           type="password"
         />
-        <button className="border">Login</button>
+        <Button variant="contained" className="border" type="submit">
+          Log In
+        </Button>
       </form>
     </div>
   );

@@ -17,7 +17,7 @@ export const Home = () => {
             Thank you for visiting our website. We hope you find everything
             you're looking for and more!
           </p>
-          <Link to="/login">
+          <Link to="/login" style={{ textDecoration: 'none' }}>
             <Button variant="outlined" size="small" type="button">
               Please Log In
             </Button>
@@ -26,7 +26,7 @@ export const Home = () => {
       ) : (
         <div>
           <p>Thank you for authorization!</p>
-          <Link to="/contacts">
+          <Link to="/contacts" style={{ textDecoration: 'none' }}>
             <Button variant="outlined" size="small" type="button">
               Your Phonebook
             </Button>

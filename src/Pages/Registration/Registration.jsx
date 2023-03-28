@@ -2,6 +2,9 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { register } from '../../redux/auth/operations';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import css from './registrationStyle.module.css';
 
 export default function Registration() {
   const dispatch = useDispatch();
@@ -12,28 +15,43 @@ export default function Registration() {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    dispatch(register({ name, email, password }));
-    navigate('/');
+    dispatch(register({ name, email, password }))
+      .unwrap()
+      .then(() => navigate('/'))
+      .catch(error => console.log(error));
   };
 
   return (
-    <div className="">
-      <h1>Registration</h1>
-      <form className="" onSubmit={handleSubmit}>
-        <input className="border" name="name" type="text" placeholder="name" />
-        <input
+    <div className={css.wraper}>
+      <h1 className={css.title}>Registration</h1>
+      <form className={css.form} onSubmit={handleSubmit}>
+        <TextField
+          id="outlined-basic"
+          label="Name"
+          variant="outlined"
+          className="border"
+          name="name"
+          type="text"
+        />
+        <TextField
+          id="outlined-basic"
+          label="Email"
+          variant="outlined"
           className="border"
           name="email"
           type="text"
-          placeholder="email"
         />
-        <input
+        <TextField
+          id="outlined-basic"
+          label="Passwordl"
+          variant="outlined"
           className="border"
           name="password"
           type="password"
-          placeholder="password"
         />
-        <button className="border">SignUP</button>
+        <Button variant="contained" className="border" type="submit">
+          SignUP
+        </Button>
       </form>
     </div>
   );

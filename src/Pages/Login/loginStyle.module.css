@@ -1,0 +1,22 @@
+.wraper {
+  width: 400px;
+  padding: 20px;
+  display: block;
+  margin: 20px auto;
+  font-size: 20px;
+  border: 2px solid #1565c0;
+  border-radius: 8px;
+  box-shadow: 0px 2px 11px -1px rgba(156, 158, 204, 1);
+}
+
+.title {
+  font-size: 36px;
+  text-align: center;
+  margin: 0;
+  padding-bottom: 20px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
