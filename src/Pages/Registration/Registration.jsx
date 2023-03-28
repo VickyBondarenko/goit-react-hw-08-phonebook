@@ -13,7 +13,7 @@ export default function Registration() {
     const email = form.email.value;
     const password = form.password.value;
     dispatch(register({ name, email, password }));
-    navigate('/contacts');
+    navigate('/');
   };
 
   return (

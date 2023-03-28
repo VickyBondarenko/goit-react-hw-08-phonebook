@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { logOut } from '../redux/auth/operations';
 import { selectIsLoggedIn } from '../redux/auth/selectors';
+import Button from '@mui/material/Button';
 import styled from 'styled-components';
 
 export const NavBar = () => {
@@ -12,26 +13,30 @@ export const NavBar = () => {
   const name = useSelector(state => state.auth.user.name);
   return (
     <Header className="">
+      <div>
+        <StyledLink to="/">Home</StyledLink>
+        {isLoggedin && <StyledLink to="/contacts">Phonebook</StyledLink>}
+      </div>
+
       {!isLoggedin ? (
         <div>
-          <StyledLink to="/">Home</StyledLink>
-          <StyledLink to="/login">log In</StyledLink> |
+          <StyledLink to="/login">log In</StyledLink>
           <StyledLink to="/register">Register</StyledLink>
         </div>
       ) : (
-        <div className="">
-          <StyledLink to="/contacts">Phonebook</StyledLink>
-          <p>Welcome, {name}</p>
-          <button
-            className=""
+        <Wrap className="">
+          <User>Welcome, {name}</User>
+          <Button
+            variant="contained"
+            style={{ height: '40px' }}
             onClick={() => {
               dispatch(logOut());
               navigate('/');
             }}
           >
             Log Out
-          </button>
-        </div>
+          </Button>
+        </Wrap>
       )}
     </Header>
   );
@@ -40,6 +45,7 @@ export const NavBar = () => {
 const Header = styled.header`
   text-decoration: none;
   display: flex;
+  justify-content: space-between;
   width: 100%;
   height: 70px;
   align-items: center;
@@ -49,7 +55,7 @@ const Header = styled.header`
 `;
 
 const StyledLink = styled(NavLink)`
-  font-size: 36px;
+  font-size: 25px;
   margin-right: 10px;
   padding: 4px;
   text-decoration: none;
@@ -57,6 +63,16 @@ const StyledLink = styled(NavLink)`
   color: black;
 
   &.active {
-    color: lightcoral;
+    color: #1565c0;
   }
+`;
+const Wrap = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+`;
+const User = styled.p`
+  font-size: 25px;
+  padding: 4px;
+  border-bottom: 3px solid #1565c0;
 `;

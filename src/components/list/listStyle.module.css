@@ -4,13 +4,16 @@
 }
 
 .item {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .list_btn {
-  padding: 5px 20px;
-  font-size: 15px;
+  height: 30px;
+  width: 80px;
   color: #22313f;
-  background-color: #8dc6ff;
   border: 2px solid #22313f;
-  border-radius: 4px;
+  font-size: 15px;
 }

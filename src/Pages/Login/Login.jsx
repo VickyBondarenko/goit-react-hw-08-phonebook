@@ -16,7 +16,7 @@ export default function Login() {
     const password = form.password.value;
     dispatch(logIn({ email, password }));
     form.reset();
-    navigate('/contacts');
+    navigate('/');
   };
 
   return (

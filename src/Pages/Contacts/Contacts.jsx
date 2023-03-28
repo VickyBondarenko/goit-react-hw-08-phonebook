@@ -38,7 +38,7 @@ export const Contacts = () => {
 export default Contacts;
 
 const Wraper = styled.div`
-  margin-left: 50px;
-  margin-top: 50px;
-  padding: 20px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;

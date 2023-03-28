@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/contacts/operations';
 import { selectItems } from '../../redux/contacts/selectors';
+import Button from '@mui/material/Button';
 
 import css from './formStyle.module.css';
 
@@ -83,9 +84,14 @@ export const Form = () => {
           value={number}
         />
       </label>
-      <button className={css.form_btn} type="submit" style={{ width: '150px' }}>
+      <Button
+        variant="contained"
+        className={css.form_btn}
+        type="submit"
+        // style={{ width: '150px' }}
+      >
         Add contact
-      </button>
+      </Button>
     </form>
   );
 };
