@@ -4,20 +4,26 @@ import { logIn } from '../../redux/auth/operations';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import css from './loginStyle.module.css';
+import { toast } from 'react-toastify';
 
 export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  // const notify = () => toast('Please enter valid data!');
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+
     dispatch(logIn({ email, password }))
       .unwrap()
       .then(() => navigate('/contacts'))
-      .catch(error => console.log(error));
+      .catch(() => {
+        toast.error('Please enter valid data!', {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      });
 
     form.reset();
   };

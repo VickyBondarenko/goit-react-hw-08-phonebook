@@ -4,6 +4,7 @@ import { fetchContacts } from '../../redux/contacts/operations';
 import {
   selectLoadingValue,
   selectError,
+  applayFilter,
 } from '../../redux/contacts/selectors';
 import { selectToken } from 'redux/auth/selectors';
 import { List } from 'components/list/List';
@@ -16,6 +17,7 @@ export const Contacts = () => {
   const isLoading = useSelector(selectLoadingValue);
   const error = useSelector(selectError);
   const token = useSelector(selectToken);
+  const contactsList = useSelector(applayFilter);
 
   useEffect(() => {
     token && dispatch(fetchContacts());
@@ -28,7 +30,12 @@ export const Contacts = () => {
       <Form />
 
       <Filter />
-      <h2>Contacts</h2>
+      {contactsList.length === 0 ? (
+        <h2>Add your contacts</h2>
+      ) : (
+        <h2>Contacts</h2>
+      )}
+
       {isLoading && !error && <b>Request in progress...</b>}
       <List />
     </Wraper>

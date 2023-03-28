@@ -5,6 +5,7 @@ import { register } from '../../redux/auth/operations';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import css from './registrationStyle.module.css';
+import { toast } from 'react-toastify';
 
 export default function Registration() {
   const dispatch = useDispatch();
@@ -18,7 +19,11 @@ export default function Registration() {
     dispatch(register({ name, email, password }))
       .unwrap()
       .then(() => navigate('/'))
-      .catch(error => console.log(error));
+      .catch(() => {
+        toast.error('This data is not valid!', {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      });
   };
 
   return (
