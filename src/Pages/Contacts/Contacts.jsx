@@ -24,18 +24,13 @@ export const Contacts = () => {
 
   return (
     <Wraper>
-      {!token ? (
-        <p>Please, Log In</p>
-      ) : (
-        <div>
-          <h1>Phonebook</h1>
-          <Form />
-          <h2>Contacts</h2>
-          <Filter />
-          {isLoading && !error && <b>Request in progress...</b>}
-          <List />
-        </div>
-      )}
+      <h1>Phonebook</h1>
+      <Form />
+
+      <h2>Contacts</h2>
+      <Filter />
+      {isLoading && !error && <b>Request in progress...</b>}
+      <List />
     </Wraper>
   );
 };
