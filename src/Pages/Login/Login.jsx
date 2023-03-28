@@ -1,14 +1,14 @@
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { logIn } from '../../redux/auth/operations';
-import { selectToken, selectIsLoggedIn } from '../../redux/auth/selectors';
+// import { selectToken, selectIsLoggedIn } from '../../redux/auth/selectors';
 // import { useEffect } from 'react';
 
 export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const isLoggedin = useSelector(selectIsLoggedIn);
-  const token = useSelector(selectToken);
+  // const isLoggedin = useSelector(selectIsLoggedIn);
+  // const token = useSelector(selectToken);
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.target;

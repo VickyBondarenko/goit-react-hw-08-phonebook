@@ -2,23 +2,16 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { logOut } from '../redux/auth/operations';
-import { selectIsLoggedIn, selectToken } from '../redux/auth/selectors';
+import { selectIsLoggedIn } from '../redux/auth/selectors';
 import styled from 'styled-components';
 
 export const NavBar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLoggedin = useSelector(selectIsLoggedIn);
-  const token = useSelector(selectToken);
   const name = useSelector(state => state.auth.user.name);
   return (
     <Header className="">
-      {/* {token ? (
-        
-      ) : (
-        
-      )} */}
-
       {!isLoggedin ? (
         <div>
           <StyledLink to="/">Home</StyledLink>
